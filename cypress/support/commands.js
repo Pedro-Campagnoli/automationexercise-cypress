@@ -94,7 +94,6 @@ Cypress.Commands.add("register", (UserData) => {
 
   cy.contains("b", "Account Created!")
     .should("be.visible")
-    .and("contain", "Account Created!");
   cy.contains("a", "Continue").click();
 });
 
@@ -108,7 +107,6 @@ Cypress.Commands.add("deleteAccount", (name) => {
 
   cy.contains("b", "Account Deleted!")
     .should("be.visible")
-    .and("contain", "Account Deleted!");
   cy.contains("a", "Continue").click();
 });
 
@@ -126,8 +124,21 @@ Cypress.Commands.add("login", (name, password) => {
 
   cy.contains("h2", "Login to your account")
     .should("be.visible")
+  cy.get('[data-qa="login-email"]').type(name);
+  cy.get('input[placeholder="Password"]').type(password);
+  cy.contains("button", "Login").click();
+});
+
+Cypress.Commands.add("wrongLogin", (name, password) => {
+  cy.contains("a", " Signup / Login").click();
+
+  cy.contains("h2", "Login to your account")
+    .should("be.visible")
     .and("contain", "Login to your account");
   cy.get('[data-qa="login-email"]').type(name);
   cy.get('input[placeholder="Password"]').type(password);
   cy.contains("button", "Login").click();
+
+  cy.contains("p", "Your email or password is incorrect!")
+    .should("be.visible")
 });

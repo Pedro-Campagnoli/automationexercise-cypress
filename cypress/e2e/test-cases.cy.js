@@ -15,4 +15,9 @@ describe("Test Cases", () => {
     cy.login(UserData.email, UserData.password);
     cy.deleteAccount(UserData.name);
   });
+  it("Test Case 3: Login User with incorrect email and password", () => {
+    const UserData = createUser();
+    cy.goTo("/");
+    cy.wrongLogin(UserData.email, UserData.password );
+  });
 });

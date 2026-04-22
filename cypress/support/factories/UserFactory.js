@@ -1,6 +1,6 @@
 export function createUser() {
   const UserData = {
-    name: "Pedro Campagnoli",
+    name: `user_${Date.now()}`,
     email: `user_${Date.now()}@gmail.com`,
     title: "Mr.",
     password: "Teste0101@",
