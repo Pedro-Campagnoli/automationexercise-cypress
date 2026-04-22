@@ -111,3 +111,23 @@ Cypress.Commands.add("deleteAccount", (name) => {
     .and("contain", "Account Deleted!");
   cy.contains("a", "Continue").click();
 });
+
+Cypress.Commands.add("logout", (name) => {
+  cy.contains("a", "Logged in as").within(() => {
+    cy.get("i.fa.fa-user").should("be.visible");
+    cy.get("b").should("have.text", name);
+  });
+
+  cy.contains("a", " Logout").click();
+});
+
+Cypress.Commands.add("login", (name, password) => {
+  cy.contains("a", " Signup / Login").click();
+
+  cy.contains("h2", "Login to your account")
+    .should("be.visible")
+    .and("contain", "Login to your account");
+  cy.get('[data-qa="login-email"]').type(name);
+  cy.get('input[placeholder="Password"]').type(password);
+  cy.contains("button", "Login").click();
+});

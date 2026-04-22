@@ -11,5 +11,8 @@ describe("Test Cases", () => {
     const UserData = createUser();
     cy.goTo("/");
     cy.register(UserData);
+    cy.logout(UserData.name);
+    cy.login(UserData.email, UserData.password);
+    cy.deleteAccount(UserData.name);
   });
 });
