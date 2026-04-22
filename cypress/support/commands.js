@@ -143,3 +143,13 @@ Cypress.Commands.add("wrongLogin", (name, password) => {
     .should("be.visible")
 });
 
+Cypress.Commands.add("registerWithExistingEmail", (user, email) => {
+  cy.contains("a", " Signup / Login").click();
+  cy.contains("h2", "New User Signup!").should("be.visible");
+  cy.get('input[placeholder="Name"]').type(user);
+  cy.get('[data-qa="signup-email"]').type(email);
+  //email ja existente no site
+  cy.contains("button", "Signup").click();
+  cy.contains("p", "Email Address already exist!").should("be.visible");
+})
+
