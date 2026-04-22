@@ -10,6 +10,7 @@
     "test": "cypress open"
   },
   "devDependencies": {
-    "cypress": "^15.13.1"
+    "cypress": "^15.13.1",
+    "cypress-file-upload": "^5.0.8"
   }
 }
