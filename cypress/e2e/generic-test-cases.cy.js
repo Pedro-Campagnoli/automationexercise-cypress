@@ -11,4 +11,10 @@ describe("Generic Test Cases", ()=> {
     cy.goTo("/");
     cy.contactUsForm(FormData);
   })
+
+  it("Test Case 7: Verify Test Cases Page", () => {
+    cy.goTo("/");
+    cy.contains("a", "Test Cases").click();
+    cy.contains("h2", "Test Cases").should("be.visible");
+  })
 })
