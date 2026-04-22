@@ -142,3 +142,4 @@ Cypress.Commands.add("wrongLogin", (name, password) => {
   cy.contains("p", "Your email or password is incorrect!")
     .should("be.visible")
 });
+
